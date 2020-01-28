@@ -34,6 +34,7 @@ class LoginScreenState extends State<LoginScreen> {
               decoration: InputDecoration.collapsed(hintText: 'Password'),
             ),
             RaisedButton(
+              onPressed: () {},
               child: Text("Login"),
               color: Color(0xffFF1744),
               textColor: Colors.green,

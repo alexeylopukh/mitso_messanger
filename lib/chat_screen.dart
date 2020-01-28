@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 class ChatScreen extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    // TODO: implement createState
     return ChatScreenState();
   }
 }
@@ -15,18 +14,18 @@ class ChatScreenState extends State<ChatScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Scaffold(
-      body: Column(
+        body: Container(
+      child: Column(
         children: <Widget>[
-          Container(
+          Expanded(
             child: ListView.builder(
                 itemCount: messages.length,
                 itemBuilder: (context, index) => cellForRowAt(messages[index])),
           ),
           Row(
             children: <Widget>[
-              TextField(controller: editController),
+              Expanded(child: TextField(controller: editController)),
               IconButton(
                 icon: Icon(Icons.message),
                 onPressed: () {
@@ -38,7 +37,18 @@ class ChatScreenState extends State<ChatScreen> {
           )
         ],
       ),
-    );
+    )
+//      body: Column(
+//        children: <Widget>[
+//          Container(
+//            child: ListView.builder(
+//                itemCount: messages.length,
+//                itemBuilder: (context, index) => cellForRowAt(messages[index])),
+//          ),
+
+//        ],
+//      ),
+        );
   }
 
   update() {
