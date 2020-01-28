@@ -1,4 +1,4 @@
-package com.lopukh.mitso_messanger
+package com.lopukh.mitso.messanger
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity
