@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:mitso_messanger/message_model.dart';
 
 class ChatScreen extends StatefulWidget {
   @override
@@ -9,7 +10,11 @@ class ChatScreen extends StatefulWidget {
 }
 
 class ChatScreenState extends State<ChatScreen> {
-  List<String> messages = ["133", "ldl"];
+  List<MessageModel> messages = [
+    MessageModel(text: '123', isMyMessage: false),
+    MessageModel(text: '123', isMyMessage: true),
+    MessageModel(text: '123', isMyMessage: false)
+  ];
   TextEditingController editController = TextEditingController();
 
   @override
@@ -29,7 +34,8 @@ class ChatScreenState extends State<ChatScreen> {
               IconButton(
                 icon: Icon(Icons.message),
                 onPressed: () {
-                  messages.add(editController.text);
+                  messages.add(MessageModel(
+                      text: editController.text, isMyMessage: true));
                   update();
                 },
               )
@@ -37,18 +43,7 @@ class ChatScreenState extends State<ChatScreen> {
           )
         ],
       ),
-    )
-//      body: Column(
-//        children: <Widget>[
-//          Container(
-//            child: ListView.builder(
-//                itemCount: messages.length,
-//                itemBuilder: (context, index) => cellForRowAt(messages[index])),
-//          ),
-
-//        ],
-//      ),
-        );
+    ));
   }
 
   update() {
@@ -57,11 +52,12 @@ class ChatScreenState extends State<ChatScreen> {
     }
   }
 
-  Widget cellForRowAt(message) {
+  Widget cellForRowAt(MessageModel message) {
     return Container(
       height: 50,
-      child: Text(message),
-      alignment: Alignment.centerLeft,
+      child: Text(message.text),
+      alignment:
+          message.isMyMessage ? Alignment.centerRight : Alignment.centerLeft,
       margin: EdgeInsets.all(10),
     );
   }
